@@ -1,0 +1,55 @@
+﻿@model Eshop.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row justify-content-between">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+          
+           
+            <div class="form-group">
+                <label asp-for="QuantityInStocke" class="control-label"></label>
+                <input asp-for="QuantityInStocke" class="form-control" />
+                <span asp-validation-for="QuantityInStocke" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            
+        </form>
+
+       
+
+    </div>
+    <div class="col-md-4">
+        <img alt="@Model.Name" class="img-thumbnail  w-75" height="50" src="data:image/*;base64,@(Convert.ToBase64String(Model.Image))" />
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
